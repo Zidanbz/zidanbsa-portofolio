@@ -1,0 +1,58 @@
+{
+  "placeholderImages": [
+    {
+      "id": "project1",
+      "description": "AI-powered web application interface",
+      "imageUrl": "project1.jpg",
+      "imageHint": "artificial intelligence",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project2",
+      "description": "Mobile app dashboard for health tracking",
+      "imageUrl": "project2.jpg",
+      "imageHint": "mobile dashboard",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project3",
+      "description": "Data visualization charts and graphs",
+      "imageUrl": "project3.jpg",
+      "imageHint": "data analysis",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project4",
+      "description": "Cloud infrastructure diagram",
+      "imageUrl": "project4.jpg",
+      "imageHint": "cloud computing",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project5",
+      "description": "Modern ecommerce store UI",
+      "imageUrl": "project5.jpg",
+      "imageHint": "ecommerce design",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project6",
+      "description": "Cybersecurity terminal interface",
+      "imageUrl": "project6.jpg",
+      "imageHint": "hacking code",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "profile-photo",
+      "description": "Professional profile photo of Rizky Pratama",
+      "imageUrl": "profile-photo.jpg",
+      "imageHint": "professional man"
+    }
+  ]
+}

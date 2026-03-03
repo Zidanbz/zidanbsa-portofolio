@@ -1,0 +1,181 @@
+=====================================================================
+     PANDUAN KUSTOMISASI PORTOFOLIO VIA GOOGLE SPREADSHEET
+=====================================================================
+
+Sekarang konten utama website bisa diganti langsung dari Spreadsheet:
+- About Me (judul, nama, bio)
+- Foto profile (via profileImageId)
+- Stats (Years Coding, Projects Done, GPA, dll)
+- Expertise cards (kartu seperti contoh Clean Architecture, bisa tambah baris)
+- Projects
+- Resume
+- Achievements
+
+Jika sheet kosong, website otomatis pakai data fallback bawaan.
+
+---------------------------------------------------------------------
+0. SETUP DASAR GOOGLE SHEETS
+---------------------------------------------------------------------
+1. Buat 1 file Google Spreadsheet.
+2. Buat tab berikut:
+   - About
+   - Stats
+   - Expertise
+   - Projects
+   - Resume
+   - Achievements
+3. Ubah permission:
+   - Anyone with the link -> Viewer
+4. Ambil Spreadsheet ID dari URL:
+   https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit
+
+---------------------------------------------------------------------
+1. SETUP ENV (.env.local)
+---------------------------------------------------------------------
+Buat file `.env.local`, lalu isi:
+
+PORTFOLIO_SPREADSHEET_ID=isi_spreadsheet_id_kamu
+PORTFOLIO_ABOUT_SHEET=About
+PORTFOLIO_STATS_SHEET=Stats
+PORTFOLIO_EXPERTISE_SHEET=Expertise
+PORTFOLIO_PROJECTS_SHEET=Projects
+PORTFOLIO_RESUME_SHEET=Resume
+PORTFOLIO_ACHIEVEMENTS_SHEET=Achievements
+PORTFOLIO_REVALIDATE_SECONDS=0
+PORTFOLIO_IMAGE_CACHE_SECONDS=0
+PORTFOLIO_RESUME_FILE=CV Zidan BSA.pdf
+
+Catatan:
+- `PORTFOLIO_REVALIDATE_SECONDS=0` = data Spreadsheet no-cache (langsung ambil terbaru).
+- `PORTFOLIO_IMAGE_CACHE_SECONDS=0` = gambar lokal no-cache.
+- `PORTFOLIO_RESUME_FILE` adalah nama PDF di folder `assets/`.
+
+---------------------------------------------------------------------
+2. FORMAT SHEET "ABOUT" (1 baris data)
+---------------------------------------------------------------------
+Header:
+
+badge,headlineMain,headlineHighlight,name,bio1,bio2,bio3,profileImageId
+
+Keterangan:
+- `profileImageId` harus cocok dengan id di `src/lib/placeholder-images.json`
+  contoh: `profile-photo`
+- Alternatif bio: bisa juga pakai kolom `bio` dengan format `paragraf1|paragraf2|paragraf3`
+
+---------------------------------------------------------------------
+3. FORMAT SHEET "STATS" (bisa tambah baris)
+---------------------------------------------------------------------
+Header:
+
+id,label,value
+
+Contoh:
+1,Years Coding,4+
+2,Projects Done,20+
+3,Current GPA,3.70
+
+---------------------------------------------------------------------
+4. FORMAT SHEET "EXPERTISE" (bisa tambah baris)
+---------------------------------------------------------------------
+Header:
+
+id,icon,title,description
+
+Nilai `icon` yang didukung:
+- code
+- layout
+- cpu
+- box
+
+Contoh:
+1,code,Clean Architecture,Focusing on maintainable scalable and modular codebase.
+2,layout,UX/UI Engineering,Designing high-end interfaces with strong usability.
+3,cpu,Fullstack Systems,Building robust backend infrastructures and fast frontend.
+
+---------------------------------------------------------------------
+5. FORMAT SHEET "PROJECTS"
+---------------------------------------------------------------------
+Header:
+
+id,title,category,date,imageId,tags,description,fullDescription,features,github,demo
+
+Keterangan:
+- `tags` dan `features` dipisah `|`
+- `imageId` harus ada di `src/lib/placeholder-images.json`
+- `date` disarankan format `YYYY-MM-DD`
+
+---------------------------------------------------------------------
+6. FORMAT SHEET "RESUME"
+---------------------------------------------------------------------
+Header:
+
+id,period,title,organization,description,highlights,chips,accent,icon,side
+
+Keterangan:
+- `highlights` dan `chips` dipisah `|`
+- `accent`: `primary` atau `secondary`
+- `icon`: `code` atau `graduation` atau `pen`
+- `side`: `left` atau `right`
+
+---------------------------------------------------------------------
+7. FORMAT SHEET "ACHIEVEMENTS"
+---------------------------------------------------------------------
+Header:
+
+id,title,issuer,period,category,description,tags,proofUrl
+
+Keterangan:
+- `tags` dipisah `|`
+- `proofUrl` opsional (link sertifikat, berita, atau dokumentasi)
+
+Contoh:
+1,Pendanaan PKM,Kemendikbudristek,2023,Funding,Lolos pendanaan PKM dengan proyek inovasi kesehatan digital,PKM|Research,https://contoh-link-bukti.com
+
+---------------------------------------------------------------------
+8. GANTI / TAMBAH GAMBAR
+---------------------------------------------------------------------
+Struktur yang dipakai:
+- Simpan file gambar di folder: `assets/images/`
+- Mapping id -> nama file ada di: `src/lib/placeholder-images.json`
+- Gambar diload dari endpoint lokal: `/api/images/<nama-file>`
+
+Cara tambah:
+1. Copy file gambar ke `assets/images/` (contoh: `project7.jpg`).
+2. Tambah object baru di `src/lib/placeholder-images.json`:
+   - `id`: unik (contoh `project7`)
+   - `imageUrl`: isi nama file saja (contoh `project7.jpg`)
+   - `imageHint`: deskripsi singkat untuk AI hint
+   - opsional `objectFit`: `cover` atau `contain`
+   - opsional `objectPosition`: contoh `center`, `top`, `50% 20%`
+3. Pakai `id` di Spreadsheet:
+   - `About.profileImageId` untuk foto profile
+   - `Projects.imageId` untuk gambar project
+
+Rekomendasi:
+- Foto profile: rasio portrait (4:5).
+- Gambar project: rasio landscape (4:3).
+- Format file: `.jpg` atau `.webp` supaya ringan.
+
+---------------------------------------------------------------------
+9. JIKA DATA TIDAK MUNCUL
+---------------------------------------------------------------------
+Periksa:
+1. Spreadsheet sudah public viewer.
+2. Spreadsheet ID benar di `.env.local`.
+3. Nama tab di env cocok dengan nama sheet.
+4. Header kolom sesuai format panduan.
+5. Restart dev server setelah ubah `.env.local`.
+
+---------------------------------------------------------------------
+10. MODE MANUAL REFRESH
+---------------------------------------------------------------------
+Perubahan Spreadsheet diterapkan saat kamu refresh browser.
+1. Pastikan `.env.local`:
+   - `PORTFOLIO_REVALIDATE_SECONDS=0`
+   - `PORTFOLIO_IMAGE_CACHE_SECONDS=0`
+2. Restart `npm run dev`.
+3. Setelah edit Spreadsheet, tekan refresh browser (`Ctrl+F5`) untuk melihat perubahan.
+
+=====================================================================
+Selesai. Konten now fully editable via Spreadsheet + image mapping file.
+=====================================================================

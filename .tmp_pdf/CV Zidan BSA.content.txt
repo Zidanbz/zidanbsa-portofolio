@@ -1,0 +1,87 @@
+ZIDAN  BSA
++62 82290259322 | zidanbz03@gmail.com | www.linkedin.com/in/zidan-bsa | https://s.id/Porto_Zidan
+Makassar, Sulawesi Selatan
+Mobile &  Fullstack Developer  spesialisasi dengan Flutter dan  pengembangan  aplikasi end- to-end . 
+Berpengalaman  memimpin pengembangan  produk rintisan (MentorMe) dari fase konsep hingga berhasil meraih 
+pendanaan  nasional (P2MW   &  PKM).  Memiliki latar belakang akademis yang kuat (IPK 3.70) dengan 
+pengalaman pertukaran pelajar di ITB. Terampil dalam mengintegrasikan backend Firebase, merancang  UI/UX 
+inovatif, dan manajemen  proyek teknis.
+Pendidikan
+Universitas Muslim Indonesia -  Makassar                                                                                                      Sep 2022 - Present
+Program Studi Teknik Informatika
+IPK : 3.70/4.00.
+Mata Kuliah Relevan : Struktur Data, Algoritma & Pemograman  1, Logika Informatika, Algoritma & Pemograman  2, Analisa Perancangan 
+Sistem, Struktur data, Komunikasi Data,
+Mengikuti Pelatihan Karya Tulis Ilmiah Fakultas Ilmu Komputer Universitas Muslim Indonesia
+Institut Teknologi Bandung   -  Bandung                                                                                                       Feb 2024 - Jun 2024
+Informatika - Pertukaran Mahasiswa  Merdeka Batch 4
+Mengikuti perkuliahan mahsiswa selama 1 semester di Institut Teknologi Bandung  dan mengambil  20 SKS
+Mata Kuliah Relevan : Pemograman  Berorientasi Objek, Pengembangan  Aplikasi Pada Platform Khusus, Rekayasa Perangkat  Lunak
+Merupakan  tim kreatif dari akun sosial media Instagram dan Tiktok @pmm4_itb_salanesa
+Pengalaman
+Program  Kreativitas Mahasiswa   (PKM) - Makassar                                                                                         Jun 2023 - Oct 2023
+Mengembangkan   ide-ide kreatif untuk meningkatkan keterlibatan dan interaksi dengan audiens, serta memastikan konsistensi pesan 
+dan branding di setiap postingan akun sosial media @prolaniscare.app
+Mengelola jadwal, sumber daya, dan memastikan setiap kegiatan berjalan lancar serta sesuai dengan tujuan yang telah ditetapkan.
+Bertanggung jawab dalam pengisian dan pemeliharaan logbook kegiatan, mencatat setiap detail penting dan perkembangan yang terjadi 
+selama kegiatan berlangsung.
+Memberikan edukasi, dukungan, dan panduan  praktis untuk membantu mereka mengelola kondisi kesehatan mereka secara lebih efektif 
+dan meningkatkan kualitas hidup pada para penderita Diabetes Melitus Tipe 2
+Pusat Pengembangan   Riset Mahasiswa   Universitas Muslim Indonesia - Makassar/
+Indonesia
+Feb 2025
+Kepala Departemen Penalaran
+Merumuskan  dan  mengeksekusi strategi departemen untuk meningkatkan output Karya  Tulis Ilmiah (KTI) mahasiswa  melalui 
+penyelenggaraan forum diskusi riset, bedah jurnal, dan pelatihan penulisan intensif.
+Memimpin koordinasi waktu dalam pelaksanaan program kerja tahunan dan bertanggung jawab penuh atas tercapainya target kinerja 
+departemen dalam pengembangan  nalar kritis mahasiswa.
+Berhasil mengelola sumber daya dan  menjadwalkan kegiatan departemen untuk memastikan efisiensi operasional dan  regenerasi 
+anggota yang berkualitas.
+Pendiri & Pengembang   Fullstack Utama  | MentorMe (Platform EdTech) - Universitas 
+Muslim Indonesia
+Sep 2024 - Dec 2024
+Leadership & Achievement: Memimpin tim dalam pengembangan  produk hingga berhasil lolos pendanaan  P2MW  2025, menjadi finalis 
+Wirausaha Merdeka, dan mendemonstrasikan  produk di KMI EXPO Magelang.
+Pengembangan  Mobile &  Web  Development: Membangun   ekosistem  aplikasi lintas platform (Seluler &  Web) menggunakan 
+Flutter.Mengintegrasikan API Firebase untuk sinkronisasi data real-time dan autentikasi pengguna yang aman.
+Desain Produk: Merancang  arsitektur Business Logic yang kompleks serta mendesain  High-Fidelity Prototype (UI/UX) untuk memastikan 
+alur pengguna ( user flow ) yang terinspirasi bagi Mentor dan Trainee.
+Deployment: Mengelola siklus pengembangan  produk secara menyeluruh ( Full Cycle ), mulai dari perancangan database, implementasi 
+fitur, hingga deployment produk ke publik (Demo  Day).
+Project
+Game Not A Nightmare                                                                                                                             Mar 2024 - Apr 2024
+Junior Front End Developer
+Mengimplementasikan  mekanika gameplay tingkat lebih lanjut menggunakan   C# dan  mengembangkan   fitur debugging  kustom 
+----------------Page (0) Break----------------
+(modifikasi parameter kecepatan & ketahanan karakter) untuk efisiensi pengujian sistem ( Quality Assurance ).
+Bondoman  Application                                                                                                                          Mar 2024 - May  2024
+Junior Front End Developer
+Menjelaskan modul manajemen  transaksi keuangan dan visualisasi data statistik interaktif untuk memudahkan  pemantauan arus kas 
+pengguna secara akurat.
+Mengoptimalkan arsitektur Front-End untuk meningkatkan kinerja aplikasi dan transisi antarmuka yang responsif.
+ProlanisCare.App                                                                                                                                                     - Present
+Fullstack Developer
+Menerbitkan aplikasi manajemen  kesehatan diabetes berbasis Android dengan integrasi Firebase untuk memantau data pasien secara 
+real-time.
+Home Workers                                                                                                                                                        - Present
+Fullstack Android Developer
+Membuat  Front-end Aplikasi Home Workers
+Membuat  Back-end Aplikasi Home Workers
+Membuat  Database Aplikasi Home Workers
+Kemampuan,   Penghargaan, dan Kompetisi
+Achievements    (2023): Pendanaan  Program Kreativitas Mahasiswa  (PKM) - Kemendibudristek
+Achievements    (2023): Silver Medal Best Presentation KTI bidang Kesehatan - Neira Competition
+Achievements   (2025): Harapan 2 Kategori Early Stage - Entrepreneurship Awards 2025
+Achievements   (2025): Program Pembinaan  Mahasiswa  Wirausaha (P2MW)
+Achievements    (2024): Semifinalis Injection 2024
+Hard Skills: Java
+Hard Skills: HTML & CSS
+Hard Skills: Dart
+Hard Skills: UI/UX Designer
+Hard Skills: Tailwind CSS
+Hard Skills: C+ + Language
+Hard Skills: Flutter
+Soft Skills: Inovatif
+Soft Skills: Manajemen  Waktu
+Soft Skills: Kerjasama Tim
+----------------Page (1) Break----------------
