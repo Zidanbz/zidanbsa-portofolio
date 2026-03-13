@@ -48,6 +48,22 @@
       "objectFit": "contain",
       "objectPosition": "center"
     },
+        {
+      "id": "project7",
+      "description": "Cybersecurity terminal interface",
+      "imageUrl": "project7.jpg",
+      "imageHint": "hacking code",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+        {
+      "id": "project8",
+      "description": "Cybersecurity terminal interface",
+      "imageUrl": "project8.jpg",
+      "imageHint": "hacking code",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
     {
       "id": "profile-photo",
       "description": "Professional profile photo of Rizky Pratama",

@@ -217,14 +217,21 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                     )}
 
                     <div className="flex flex-col gap-3">
-                      {selectedProject.links?.demo && (
-                        <Button
-                          className="w-full bg-primary text-primary-foreground font-bold h-11 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform group"
-                          onClick={() => window.open(selectedProject.links?.demo, "_blank")}
-                        >
-                          Live Preview <Rocket className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      )}
+                      {selectedProject.links?.demo && (() => {
+                        const demoLink = selectedProject.links?.demo?.trim();
+                        const isPlaceholderDemo = demoLink === "#" || demoLink === "";
+                        const hasValidDemoLink = Boolean(demoLink) && !isPlaceholderDemo;
+
+                        return (
+                          <Button
+                            className="w-full bg-primary text-primary-foreground font-bold h-11 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform group"
+                            disabled={!hasValidDemoLink}
+                            onClick={hasValidDemoLink ? () => window.open(demoLink, "_blank") : undefined}
+                          >
+                            Live Preview <Rocket className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </Button>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
