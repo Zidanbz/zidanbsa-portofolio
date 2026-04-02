@@ -67,7 +67,7 @@
     {
       "id": "project9",
       "description": "image",
-      "imageUrl": "project8.jpg",
+      "imageUrl": "project9.jpg",
       "imageHint": "hacking code",
       "objectFit": "contain",
       "objectPosition": "center"
