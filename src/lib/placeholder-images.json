@@ -2,7 +2,7 @@
   "placeholderImages": [
     {
       "id": "project1",
-      "description": "AI-powered web application interface",
+      "description": "image",
       "imageUrl": "project1.jpg",
       "imageHint": "artificial intelligence",
       "objectFit": "contain",
@@ -10,7 +10,7 @@
     },
     {
       "id": "project2",
-      "description": "Mobile app dashboard for health tracking",
+      "description": "image",
       "imageUrl": "project2.jpg",
       "imageHint": "mobile dashboard",
       "objectFit": "contain",
@@ -18,7 +18,7 @@
     },
     {
       "id": "project3",
-      "description": "Data visualization charts and graphs",
+      "description": "image",
       "imageUrl": "project3.jpg",
       "imageHint": "data analysis",
       "objectFit": "contain",
@@ -26,7 +26,7 @@
     },
     {
       "id": "project4",
-      "description": "Cloud infrastructure diagram",
+      "description": "image",
       "imageUrl": "project4.jpg",
       "imageHint": "cloud computing",
       "objectFit": "contain",
@@ -34,7 +34,7 @@
     },
     {
       "id": "project5",
-      "description": "Modern ecommerce store UI",
+      "description": "image",
       "imageUrl": "project5.jpg",
       "imageHint": "ecommerce design",
       "objectFit": "contain",
@@ -42,7 +42,7 @@
     },
     {
       "id": "project6",
-      "description": "Cybersecurity terminal interface",
+      "description": "image",
       "imageUrl": "project6.jpg",
       "imageHint": "hacking code",
       "objectFit": "contain",
@@ -50,7 +50,7 @@
     },
         {
       "id": "project7",
-      "description": "Cybersecurity terminal interface",
+      "description": "image",
       "imageUrl": "project7.jpg",
       "imageHint": "hacking code",
       "objectFit": "contain",
@@ -58,7 +58,15 @@
     },
         {
       "id": "project8",
-      "description": "Cybersecurity terminal interface",
+      "description": "image",
+      "imageUrl": "project8.jpg",
+      "imageHint": "hacking code",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project9",
+      "description": "image",
       "imageUrl": "project8.jpg",
       "imageHint": "hacking code",
       "objectFit": "contain",
