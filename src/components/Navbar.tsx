@@ -57,10 +57,6 @@ export function Navbar() {
   ];
 
   const isLinkActive = (link: (typeof navLinks)[number]): boolean => {
-    if (link.type === 'route') {
-      return pathname === link.href;
-    }
-
     if (!isHomePage) {
       return false;
     }
