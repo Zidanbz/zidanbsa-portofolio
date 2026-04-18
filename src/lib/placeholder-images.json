@@ -75,7 +75,13 @@
     {
       "id": "profile-photo",
       "description": "Professional profile photo of Rizky Pratama",
-      "imageUrl": "profile-photo.jpg",
+      "imageUrl": "profile-photo.png",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "profile-photo2",
+      "description": "Professional profile photo of Rizky Pratama",
+      "imageUrl": "profile-photo2.png",
       "imageHint": "professional man"
     }
   ]

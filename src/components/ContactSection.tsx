@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, Github, Linkedin, Instagram, MessageSquare } from 'lucide-react';
+import { Reveal } from '@/components/motion/Reveal';
 
 export function ContactSection() {
   const mailtoUrl = `mailto:zidanbz03@gmail.com?subject=${encodeURIComponent(
@@ -29,10 +30,12 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="py-32 px-6 max-w-5xl mx-auto">
-      <div className="glass-morphism rounded-[3rem] p-12 md:p-20 text-center border-white/5 overflow-hidden relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-primary/20 blur-[100px] -z-10" />
+      <Reveal>
+      <div className="glass-morphism rounded-[3rem] p-12 md:p-20 text-center border-black/10 overflow-hidden relative shadow-2xl shadow-black/10 transition-shadow duration-500 hover:shadow-primary/15">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-primary/25 blur-[100px] -z-10" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-70" />
         
-        <h2 className="text-5xl md:text-7xl font-headline font-bold text-white mb-6">
+        <h2 className="relative text-5xl md:text-7xl font-headline font-black text-secondary mb-6 tracking-tight uppercase">
           Have an idea? <br />
           <span className="text-muted-foreground">Let's build it.</span>
         </h2>
@@ -43,7 +46,7 @@ export function ContactSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
-            className="bg-white text-black font-bold h-14 px-8 rounded-full hover:scale-105 transition-transform flex items-center gap-3"
+            className="bg-primary text-primary-foreground font-bold h-14 px-8 rounded-full hover:scale-105 transition-transform flex items-center gap-3"
             onClick={() => window.open(mailtoUrl, '_self')}
           >
             Contact Me <Mail className="h-5 w-5" />
@@ -51,14 +54,14 @@ export function ContactSection() {
           
           <Button 
             variant="outline"
-            className="glass-morphism border-white/10 text-white font-bold h-14 px-8 rounded-full hover:bg-white/5 transition-all flex items-center gap-3"
+            className="glass-morphism border-black/10 text-foreground font-bold h-14 px-8 rounded-full hover:bg-black/5 transition-all flex items-center gap-3"
             onClick={() => window.open(whatsappUrl, '_blank')}
           >
             Chat on WhatsApp <MessageSquare className="h-5 w-5 text-[#25D366]" />
           </Button>
         </div>
 
-        <div className="mt-14 flex justify-center gap-6">
+        <div className="relative mt-14 flex justify-center gap-6">
           {socialLinks.map(({ label, href, icon: Icon }) => (
             <a
               key={label}
@@ -66,13 +69,14 @@ export function ContactSection() {
               target="_blank"
               rel="noreferrer"
               aria-label={label}
-              className="w-12 h-12 glass-morphism rounded-full flex items-center justify-center border-white/10 hover:border-primary/50 hover:text-primary transition-all text-muted-foreground"
+              className="w-12 h-12 glass-morphism rounded-full flex items-center justify-center border-black/10 hover:border-primary/60 hover:text-secondary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 text-muted-foreground"
             >
               <Icon className="h-5 w-5" />
             </a>
           ))}
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

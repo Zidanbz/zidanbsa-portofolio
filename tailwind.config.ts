@@ -10,11 +10,12 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Space Grotesk', 'sans-serif'],
-        code: ['monospace'],
-      },
+        fontFamily: {
+          body: ['Inter', 'sans-serif'],
+          headline: ['Space Grotesk', 'sans-serif'],
+          luckiest: ['"Luckiest Guy"', 'cursive'],
+          code: ['monospace'],
+        },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -92,12 +93,32 @@ export default {
         'gradient-shift': {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
-        }
+        },
+        'orb-1': {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(48px, 36px) scale(1.06)' },
+        },
+        'orb-2': {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(-40px, -28px) scale(1.05)' },
+        },
+        'orb-3': {
+          '0%, 100%': { opacity: '0.35' },
+          '50%': { opacity: '0.65' },
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+          '50%': { opacity: '0.85', transform: 'scale(1.08)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'gradient-shift': 'gradient-shift 15s ease infinite',
+        'gradient-shift': 'gradient-shift 10s ease infinite',
+        'orb-1': 'orb-1 24s ease-in-out infinite',
+        'orb-2': 'orb-2 30s ease-in-out infinite',
+        'orb-3': 'orb-3 14s ease-in-out infinite',
+        'pulse-soft': 'pulse-soft 5s ease-in-out infinite',
       },
     },
   },

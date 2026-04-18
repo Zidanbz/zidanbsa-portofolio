@@ -10,6 +10,7 @@ import { ChevronRight, Code2, Rocket, Target, Cpu, Calendar } from "lucide-react
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ProjectItem } from "@/lib/portfolio-data";
+import { LiftOnHover, Reveal, StaggerItem } from "@/components/motion/Reveal";
 
 interface ProjectSectionProps {
   projects: ProjectItem[];
@@ -41,48 +42,55 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
   return (
     <section id="work" className="py-24 px-6 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase tracking-widest text-primary mb-4">
-            My Portfolio
+        <Reveal>
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase tracking-widest text-primary mb-4">
+              My Portfolio
+            </div>
+            <h2 className="text-4xl md:text-5xl font-headline font-black text-secondary tracking-tight uppercase">
+              Featured Projects
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-headline font-bold text-white">Featured Projects</h2>
-        </div>
-        <div className="flex flex-wrap gap-2 p-1 glass-morphism rounded-xl border-white/5">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
-                filter === category
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "text-muted-foreground hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <div className="flex flex-wrap gap-2 p-1.5 glass-morphism rounded-2xl border-black/10 shadow-inner shadow-black/10">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setFilter(category)}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
+                  filter === category
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-[1.02]"
+                    : "text-muted-foreground hover:text-foreground hover:bg-black/5"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </Reveal>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.length === 0 && (
-          <div className="lg:col-span-3 md:col-span-2 p-8 rounded-2xl glass-morphism border-white/10 text-muted-foreground text-center">
+          <div className="lg:col-span-3 md:col-span-2 p-8 rounded-2xl glass-morphism border-black/10 text-muted-foreground text-center">
             Belum ada project pada kategori ini.
           </div>
         )}
 
-        {filteredProjects.map((project) => {
+        {filteredProjects.map((project, index) => {
           const image = PlaceHolderImages.find((item) => item.id === project.imageId);
           const fit = image?.objectFit ?? "cover";
           const position = image?.objectPosition ?? "center";
           const isLocalAssetImage = image?.imageUrl?.startsWith("/api/images/") ?? false;
 
           return (
+            <StaggerItem key={project.id} index={index} stagger={0.08}>
+              <LiftOnHover className="h-full">
             <Card
-              key={project.id}
-              className="group overflow-hidden glass-morphism border-white/5 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col"
+              className="group overflow-hidden glass-morphism border-black/10 hover:border-primary/60 transition-all duration-500 h-full flex flex-col shadow-lg shadow-black/10"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-900/40">
+              <div className="relative aspect-[4/3] overflow-hidden bg-slate-700/20">
                 {image && (
                   <Image
                     src={image.imageUrl}
@@ -94,15 +102,15 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                     data-ai-hint={image.imageHint}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-90" />
                 <div className="absolute top-4 left-4">
-                  <Badge className="glass-morphism text-white border-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-bold tracking-wider uppercase">
+                  <Badge className="glass-morphism text-foreground border-black/10 backdrop-blur-md px-3 py-1 text-[10px] font-bold tracking-wider uppercase">
                     {project.category}
                   </Badge>
                 </div>
               </div>
               <CardContent className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-headline font-bold mb-3 group-hover:text-primary transition-colors line-clamp-1">
+                <h3 className="text-xl font-headline font-black text-secondary mb-3 group-hover:text-primary transition-colors line-clamp-1 uppercase">
                   {project.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-6 line-clamp-2 leading-relaxed">
@@ -113,7 +121,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                     {project.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="text-[9px] font-bold uppercase tracking-tighter text-muted-foreground border border-white/5 px-2 py-0.5 rounded-md bg-white/[0.02]"
+                        className="text-[9px] font-bold uppercase tracking-tighter text-muted-foreground border border-black/10 px-2 py-0.5 rounded-md bg-black/[0.02]"
                       >
                         {tag}
                       </span>
@@ -129,15 +137,17 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                 </div>
               </CardContent>
             </Card>
+              </LiftOnHover>
+            </StaggerItem>
           );
         })}
       </div>
 
       <Dialog open={Boolean(selectedProject)} onOpenChange={(open) => !open && setSelectedProject(null)}>
-        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden glass-morphism border-white/10 bg-background/95 backdrop-blur-2xl">
+        <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden glass-morphism border-black/10 bg-background/95 backdrop-blur-2xl">
           {selectedProject && (
             <div className="flex flex-col max-h-[90vh]">
-              <div className="relative w-full aspect-[21/9] border-b border-white/5">
+              <div className="relative w-full aspect-[21/9] border-b border-black/10">
                 {selectedImage && (
                   <Image
                     src={selectedImage.imageUrl}
@@ -165,7 +175,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                       })}
                     </div>
                   </div>
-                  <DialogTitle className="text-3xl font-headline font-bold text-white tracking-tight">
+                  <DialogTitle className="text-3xl font-headline font-black text-secondary tracking-tight uppercase">
                     {selectedProject.title}
                   </DialogTitle>
                 </div>
@@ -175,7 +185,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                 <div className="grid md:grid-cols-5 gap-10">
                   <div className="md:col-span-3 space-y-8">
                     <div>
-                      <h4 className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-widest mb-4">
+                      <h4 className="flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-widest mb-4">
                         <Target className="h-4 w-4 text-primary" /> Project Overview
                       </h4>
                       <p className="text-muted-foreground leading-relaxed text-[15px]">
@@ -185,7 +195,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
 
                     {selectedProject.features.length > 0 && (
                       <div>
-                        <h4 className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-widest mb-4">
+                        <h4 className="flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-widest mb-4">
                           <Cpu className="h-4 w-4 text-primary" /> Key Features
                         </h4>
                         <ul className="space-y-3">
@@ -202,13 +212,13 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
 
                   <div className="md:col-span-2 space-y-8">
                     {selectedProject.tags.length > 0 && (
-                      <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
-                        <h4 className="flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-widest mb-4">
+                      <div className="p-5 rounded-2xl bg-black/[0.03] border border-black/10">
+                        <h4 className="flex items-center gap-2 text-secondary font-bold text-[10px] uppercase tracking-widest mb-4">
                           <Code2 className="h-3.5 w-3.5 text-primary" /> Tech Stack
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {selectedProject.tags.map((tag) => (
-                            <span key={tag} className="text-[10px] font-bold bg-white/5 border border-white/10 text-white/80 px-2.5 py-1 rounded-lg">
+                            <span key={tag} className="text-[10px] font-bold bg-black/5 border border-black/10 text-foreground/80 px-2.5 py-1 rounded-lg">
                               {tag}
                             </span>
                           ))}
