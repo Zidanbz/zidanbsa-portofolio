@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -12,8 +13,23 @@ type RevealProps = {
   y?: number;
 };
 
+function useShouldReduceEffects() {
+  const reduceMotion = useReducedMotion();
+  const [isCoarseOrMobile, setIsCoarseOrMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 900px)");
+    const onChange = () => setIsCoarseOrMobile(mediaQuery.matches);
+    onChange();
+    mediaQuery.addEventListener("change", onChange);
+    return () => mediaQuery.removeEventListener("change", onChange);
+  }, []);
+
+  return reduceMotion || isCoarseOrMobile;
+}
+
 export function Reveal({ children, className, delay = 0, y = 28 }: RevealProps) {
-  const reduce = useReducedMotion();
+  const reduce = useShouldReduceEffects();
 
   if (reduce) {
     return <div className={className}>{children}</div>;
@@ -45,7 +61,7 @@ export function StaggerItem({
   index,
   stagger = 0.07,
 }: StaggerItemProps) {
-  const reduce = useReducedMotion();
+  const reduce = useShouldReduceEffects();
 
   if (reduce) {
     return <div className={className}>{children}</div>;
@@ -71,7 +87,7 @@ type LiftProps = {
 
 /** Subtle hover lift — keeps motion comfortable and optional via reduced-motion. */
 export function LiftOnHover({ children, className }: LiftProps) {
-  const reduce = useReducedMotion();
+  const reduce = useShouldReduceEffects();
 
   if (reduce) {
     return <div className={className}>{children}</div>;

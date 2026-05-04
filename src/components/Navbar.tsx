@@ -43,7 +43,10 @@ export function Navbar() {
   }, [isHomePage]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => {
+      const next = window.scrollY > 16;
+      setScrolled((prev) => (prev === next ? prev : next));
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -68,7 +71,7 @@ export function Navbar() {
     <motion.nav
       className={`fixed top-0 w-full z-50 px-6 flex justify-between items-center border-b transition-[background-color,box-shadow,backdrop-filter,border-color,padding] duration-300 ${
         scrolled
-          ? 'bg-background/85 backdrop-blur-xl border-black/10 shadow-lg shadow-black/10 py-3.5'
+          ? 'bg-background/94 border-black/10 shadow-md shadow-black/10 py-3.5'
           : 'bg-transparent/0 backdrop-blur-none border-transparent py-6'
       }`}
     >

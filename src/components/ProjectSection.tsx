@@ -82,7 +82,6 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
           const image = PlaceHolderImages.find((item) => item.id === project.imageId);
           const fit = image?.objectFit ?? "cover";
           const position = image?.objectPosition ?? "center";
-          const isLocalAssetImage = image?.imageUrl?.startsWith("/api/images/") ?? false;
 
           return (
             <StaggerItem key={project.id} index={index} stagger={0.08}>
@@ -96,7 +95,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                     src={image.imageUrl}
                     alt={project.title}
                     fill
-                    unoptimized={isLocalAssetImage}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="transition-transform duration-700 group-hover:scale-105"
                     style={{ objectFit: fit, objectPosition: position }}
                     data-ai-hint={image.imageHint}
@@ -153,7 +152,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
                     src={selectedImage.imageUrl}
                     alt={selectedProject.title}
                     fill
-                    unoptimized={selectedImage.imageUrl.startsWith("/api/images/")}
+                    sizes="(max-width: 768px) 100vw, 700px"
                     style={{
                       objectFit: selectedImage.objectFit ?? "cover",
                       objectPosition: selectedImage.objectPosition ?? "center",

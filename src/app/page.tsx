@@ -53,7 +53,7 @@ export default async function Home() {
                     src={(profileImg2 ?? profileImg)!.imageUrl}
                     alt={about.name}
                     fill
-                    unoptimized={(profileImg2 ?? profileImg)!.imageUrl.startsWith('/api/images/')}
+                    sizes="(max-width: 1024px) 92vw, 33vw"
                     style={{
                       objectFit: ((profileImg2 ?? profileImg)!.objectFit as 'cover' | 'contain' | undefined) ?? 'cover',
                       objectPosition: (profileImg2 ?? profileImg)!.objectPosition ?? 'center',

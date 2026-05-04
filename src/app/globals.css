@@ -87,7 +87,13 @@
 }
 
 .glass-morphism {
-  @apply bg-card/80 backdrop-blur-md border border-black/5;
+  @apply bg-card/90 border border-black/5;
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .glass-morphism {
+    backdrop-filter: blur(6px);
+  }
 }
 
 @keyframes float {

@@ -64,8 +64,8 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
             <Image
               src={profileImg.imageUrl}
               alt={about.name}
-              unoptimized={profileImg.imageUrl.startsWith("/api/images/")}
               fill
+              sizes="(max-width: 768px) 85vw, (max-width: 1200px) 42vw, 360px"
               style={{
                 objectFit: (profileImg.objectFit as "cover" | "contain" | undefined) ?? "cover",
                 objectPosition: profileImg.objectPosition ?? "center",
@@ -102,8 +102,8 @@ function HeroLayout({
             <Image
               src={profileImg.imageUrl}
               alt={about.name}
-              unoptimized={profileImg.imageUrl.startsWith("/api/images/")}
               fill
+              sizes="(max-width: 768px) 85vw, (max-width: 1200px) 42vw, 360px"
               style={{
                 objectFit: (profileImg.objectFit as "cover" | "contain" | undefined) ?? "cover",
                 objectPosition: profileImg.objectPosition ?? "center",
@@ -182,7 +182,6 @@ function HeroContent({
     </>
   );
 }
-
 
 
 

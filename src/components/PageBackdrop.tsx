@@ -12,9 +12,9 @@ export function PageBackdrop() {
       <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 mesh-gradient opacity-90" />
       <div className="absolute inset-0 bg-grid-fade opacity-[0.2]" />
-      <div className="absolute -top-[20%] left-[10%] h-[min(70vw,520px)] w-[min(70vw,520px)] rounded-full bg-primary/30 blur-[100px] animate-orb-1" />
-      <div className="absolute bottom-[-10%] right-[5%] h-[min(60vw,480px)] w-[min(60vw,480px)] rounded-full bg-secondary/10 blur-[110px] animate-orb-2" />
-      <div className="absolute top-1/2 left-1/2 h-[40vh] w-[90vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[80px] animate-orb-3" />
+      <div className="absolute -top-[18%] left-[12%] h-[min(64vw,460px)] w-[min(64vw,460px)] rounded-full bg-primary/25 blur-[72px] motion-safe:animate-orb-1 hidden md:block" />
+      <div className="absolute bottom-[-8%] right-[8%] h-[min(54vw,420px)] w-[min(54vw,420px)] rounded-full bg-secondary/10 blur-[80px] motion-safe:animate-orb-2 hidden lg:block" />
+      <div className="absolute top-1/2 left-1/2 h-[34vh] w-[84vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[58px]" />
     </div>
   );
 }
