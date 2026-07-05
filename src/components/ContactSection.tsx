@@ -29,53 +29,51 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-32 px-6 max-w-5xl mx-auto">
+    <section id="contact" className="py-24 px-6 max-w-5xl mx-auto">
       <Reveal>
-      <div className="glass-morphism rounded-[3rem] p-12 md:p-20 text-center border-black/10 overflow-hidden relative shadow-2xl shadow-black/10 transition-shadow duration-500 hover:shadow-primary/15">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-primary/25 blur-[100px] -z-10" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-70" />
-        
-        <h2 className="relative text-5xl md:text-7xl font-headline font-black text-secondary mb-6 tracking-tight uppercase">
-          Have an idea? <br />
-          <span className="text-muted-foreground">Let's build it.</span>
-        </h2>
-        
-        <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto leading-relaxed">
-          I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-        </p>
+        <div className="neo-card rounded-[3rem] p-10 md:p-16 text-center border-4 border-black shadow-brutal-xl overflow-hidden relative bg-slate-900 text-white">
+          <span className="badge-neo bg-[#FFDE00] text-black border-2 border-black shadow-brutal-sm mb-6 rotate-2">LET'S CONNECT 🤝</span>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            className="bg-primary text-primary-foreground font-bold h-14 px-8 rounded-full hover:scale-105 transition-transform flex items-center gap-3"
-            onClick={() => window.open(mailtoUrl, '_self')}
-          >
-            Contact Me <Mail className="h-5 w-5" />
-          </Button>
-          
-          <Button 
-            variant="outline"
-            className="glass-morphism border-black/10 text-foreground font-bold h-14 px-8 rounded-full hover:bg-black/5 transition-all flex items-center gap-3"
-            onClick={() => window.open(whatsappUrl, '_blank')}
-          >
-            Chat on WhatsApp <MessageSquare className="h-5 w-5 text-[#25D366]" />
-          </Button>
-        </div>
+          <h2 className="relative text-4xl md:text-6xl font-luckiest font-black mb-6 tracking-tight uppercase leading-[0.92] text-white drop-shadow-[4px_4px_0px_#000000]">
+            HAVE AN IDEA? <br />
+            <span className="text-[#FF007A] drop-shadow-[4px_4px_0px_#FFDE00]">LET'S BUILD IT.</span>
+          </h2>
 
-        <div className="relative mt-14 flex justify-center gap-6">
-          {socialLinks.map(({ label, href, icon: Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={label}
-              className="w-12 h-12 glass-morphism rounded-full flex items-center justify-center border-black/10 hover:border-primary/60 hover:text-secondary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 text-muted-foreground"
+          <p className="text-slate-200 font-medium text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              className="btn-neo-yellow h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
+              onClick={() => window.open(mailtoUrl, '_self')}
             >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
+              Contact Me <Mail className="h-5 w-5 stroke-[2.5]" />
+            </Button>
+
+            <Button
+              className="btn-neo-pink h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
+              onClick={() => window.open(whatsappUrl, '_blank')}
+            >
+              Chat on WhatsApp <MessageSquare className="h-5 w-5 stroke-[2.5]" />
+            </Button>
+          </div>
+
+          <div className="relative mt-12 flex justify-center gap-4">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="w-14 h-14 bg-slate-950 rounded-2xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg hover:bg-[#FFDE00] hover:text-black active:translate-x-0.5 active:translate-y-0.5 transition-all text-[#FFDE00] flex items-center justify-center group"
+              >
+                <Icon className="h-6 w-6 stroke-[2.5] text-[#FFDE00] group-hover:text-black transition-colors" />
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
       </Reveal>
     </section>
   );

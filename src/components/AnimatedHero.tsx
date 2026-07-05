@@ -47,19 +47,21 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
 
   return (
     <motion.div
-      className="container px-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end"
+      className="container px-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-7xl mx-auto"
       variants={container}
       initial="hidden"
       animate="visible"
     >
-    <motion.div variants={item} className="lg:col-span-7 order-2 lg:order-1 pb-10">
+      <motion.div variants={item} className="lg:col-span-7 order-2 lg:order-1 pb-6">
         <HeroContent about={about} stats={stats} motion={true} />
       </motion.div>
 
       <motion.div variants={item} className="lg:col-span-5 relative order-1 lg:order-2">
-        <div className="absolute -bottom-2 right-2 md:right-8 w-[72%] h-[68%] bg-primary rounded-[2.25rem] z-0" />
-        <div className="relative aspect-[4/5] max-w-[360px] mx-auto lg:ml-auto rounded-[2rem] overflow-hidden border border-black/10 group shadow-xl shadow-black/10 ring-1 ring-black/5 bg-white z-[1]">
-          <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-primary/25 via-transparent to-secondary/10 opacity-85 pointer-events-none z-[1]" />
+        {/* Neobrutalist Offset Background Box (Signature Neobrutal Yellow #FFDE00) */}
+        <div className="absolute -bottom-3 right-2 md:right-6 w-[82%] h-[78%] bg-[#FFDE00] rounded-[2.5rem] border-4 border-black shadow-brutal-lg z-0" />
+
+        {/* Profile Image Container */}
+        <div className="relative aspect-[4/5] max-w-[360px] mx-auto lg:ml-auto rounded-[2.5rem] overflow-hidden border-4 border-black shadow-brutal-lg bg-slate-900 z-[1] group">
           {profileImg && (
             <Image
               src={profileImg.imageUrl}
@@ -72,13 +74,20 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
               }}
               data-ai-hint={profileImg.imageHint}
               priority
+              className="transition-transform duration-500 group-hover:scale-105"
             />
           )}
-          <div className="absolute top-6 right-6 w-12 h-12 glass-morphism rounded-xl flex items-center justify-center border-black/10 animate-float z-[2]">
-            <Box className="text-foreground h-6 w-6" />
+
+          {/* Floating Sticker Badges */}
+          <div className="absolute top-4 right-4 bg-[#A3E635] text-black border-2 border-black px-3.5 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 animate-float rotate-2 z-[2]">
+            <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
+            <span className="text-[11px] font-headline font-black uppercase tracking-wider">AVAILABLE ⚡</span>
+          </div>
+
+          <div className="absolute bottom-4 left-4 bg-[#FF007A] text-white px-4 py-1.5 rounded-xl border-2 border-black shadow-brutal-sm -rotate-3 z-[2]">
+            <span className="text-xs font-headline font-black uppercase tracking-wide">ZIDAN BSA 👋</span>
           </div>
         </div>
-        <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/30 blur-3xl -z-10 rounded-full animate-pulse-soft" />
       </motion.div>
     </motion.div>
   );
@@ -91,13 +100,13 @@ function HeroLayout({
   motion: useMotion,
 }: AnimatedHeroProps & { motion: boolean }) {
   return (
-    <div className="container px-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-      <div className="lg:col-span-7 order-2 lg:order-1 pb-10">
+    <div className="container px-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
+      <div className="lg:col-span-7 order-2 lg:order-1 pb-6">
         <HeroContent about={about} stats={stats} motion={useMotion} />
       </div>
       <div className="lg:col-span-5 relative order-1 lg:order-2">
-        <div className="absolute -bottom-2 right-2 md:right-8 w-[72%] h-[68%] bg-primary rounded-[2.25rem] z-0" />
-        <div className="relative aspect-[4/5] max-w-[360px] mx-auto lg:ml-auto rounded-[2rem] overflow-hidden border border-black/10 shadow-xl shadow-black/10 bg-white z-[1]">
+        <div className="absolute -bottom-3 right-2 md:right-6 w-[82%] h-[78%] bg-[#FFDE00] rounded-[2.5rem] border-4 border-black shadow-brutal-lg z-0" />
+        <div className="relative aspect-[4/5] max-w-[360px] mx-auto lg:ml-auto rounded-[2.5rem] overflow-hidden border-4 border-black shadow-brutal-lg bg-slate-900 z-[1]">
           {profileImg && (
             <Image
               src={profileImg.imageUrl}
@@ -112,11 +121,11 @@ function HeroLayout({
               priority
             />
           )}
-          <div className="absolute top-6 right-6 w-12 h-12 glass-morphism rounded-xl flex items-center justify-center border-black/10 animate-float">
-            <Box className="text-foreground h-6 w-6" />
+          <div className="absolute top-4 right-4 bg-[#A3E635] text-black border-2 border-black px-3.5 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-black" />
+            <span className="text-[11px] font-headline font-black uppercase tracking-wider">AVAILABLE ⚡</span>
           </div>
         </div>
-        <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/25 blur-3xl -z-10" />
       </div>
     </div>
   );
@@ -131,20 +140,30 @@ function HeroContent({
   stats: StatItem[];
   motion: boolean;
 }) {
-  const statCardClass = "glass-morphism p-4 rounded-2xl border-black/10 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group/stat";
+  const statCardClass =
+    "bg-slate-900 p-5 rounded-2xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 group/stat";
 
   const headline = (
-    <h1 className="text-6xl md:text-8xl xl:text-9xl font-luckiest font-black text-secondary mb-6 leading-[0.9] uppercase tracking-[-0.04em]">
-      PORTO
-      <br />
-      FOLIO
-    </h1>
+    <div>
+      <div className="flex flex-wrap gap-2.5 mb-5">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FFDE00] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm -rotate-1">
+          💻 FULLSTACK DEVELOPER
+        </span>
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#00F0FF] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm rotate-2">
+          {about.location ? `${about.location.toUpperCase()} 📍` : "MAKASSAR, ID 📍"}
+        </span>
+      </div>
+      <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-9xl font-luckiest font-black mb-6 leading-[0.88] uppercase tracking-[-0.03em] text-white drop-shadow-[5px_5px_0px_#FFDE00]">
+        PORTO<br />FOLIO
+      </h1>
+      <p className="text-base sm:text-lg font-medium text-slate-300 max-w-xl mb-8 leading-relaxed">
+        {about.roleDescription || "Crafting scalable web & mobile products with high-performance code & bold Neobrutalism design."}
+      </p>
+    </div>
   );
 
-
-
   const statsGrid = (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-2xl">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl">
       {stats.map((stat, i) =>
         useMotion ? (
           <motion.div
@@ -154,19 +173,19 @@ function HeroContent({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 + i * 0.06, duration: 0.45, ease }}
           >
-            <p className="text-2xl md:text-3xl font-headline font-black text-secondary mb-1 group-hover/stat:text-primary transition-colors">
+            <p className="text-3xl font-headline font-black text-[#FFDE00] mb-0.5 group-hover/stat:text-[#00F0FF] transition-colors">
               {stat.value}
             </p>
-            <p className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-widest">
+            <p className="text-[10px] font-headline font-black text-slate-300 uppercase tracking-wider">
               {stat.label}
             </p>
           </motion.div>
         ) : (
           <div key={stat.id} className={statCardClass}>
-            <p className="text-2xl md:text-3xl font-headline font-black text-secondary mb-1 group-hover/stat:text-primary transition-colors">
-{stat.value}
+            <p className="text-3xl font-headline font-black text-[#FFDE00] mb-0.5 group-hover/stat:text-[#00F0FF] transition-colors">
+              {stat.value}
             </p>
-            <p className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-widest">
+            <p className="text-[10px] font-headline font-black text-slate-300 uppercase tracking-wider">
               {stat.label}
             </p>
           </div>

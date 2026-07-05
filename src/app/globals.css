@@ -1,39 +1,36 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 92%;
-    --foreground: 228 14% 17%;
-    --card: 0 0% 95%;
-    --card-foreground: 228 14% 17%;
-    --popover: 0 0% 95%;
-    --popover-foreground: 228 14% 17%;
-    --primary: 42 98% 54%;
-    --primary-foreground: 228 14% 17%;
-    --secondary: 220 13% 22%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 88%;
-    --muted-foreground: 228 8% 35%;
-    --accent: 42 98% 54%;
-    --accent-foreground: 228 14% 17%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 188 94% 43%;
+    --secondary-foreground: 224 71% 4%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 239 84% 67%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
-    --border: 220 10% 74%;
-    --input: 220 10% 74%;
-    --ring: 42 98% 54%;
-    --radius: 0.75rem;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 239 84% 67%;
+    --radius: 1.25rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    @apply bg-[#080C14] text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   h1, h2, h3, h4, h5, h6 {
@@ -54,54 +51,72 @@
 }
 
 .gradient-bg {
-  background: radial-gradient(circle at top left, rgba(255, 193, 7, 0.2), transparent),
-              radial-gradient(circle at bottom right, rgba(41, 44, 53, 0.14), transparent);
+  background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.25), transparent 50%),
+              radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.20), transparent 50%);
 }
 
 .mesh-gradient {
   background:
-    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(255, 193, 7, 0.22), transparent 55%),
-    radial-gradient(ellipse 70% 55% at 90% 15%, rgba(50, 52, 60, 0.08), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255, 193, 7, 0.08), transparent 45%);
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(99, 102, 241, 0.30), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 90% 15%, rgba(6, 182, 212, 0.25), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(236, 72, 153, 0.18), transparent 45%);
 }
 
 .bg-grid-fade {
   background-image:
-    linear-gradient(to right, hsl(var(--foreground) / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 20%, transparent 70%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 50%, transparent 95%);
 }
 
-.headline-gradient {
-  background-image: linear-gradient(
-    90deg,
-    hsl(var(--secondary)),
-    hsl(var(--primary)),
-    hsl(var(--primary))
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.headline-cyber {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-100 to-cyan-300;
 }
 
-.glass-morphism {
-  @apply bg-card/90 border border-black/5;
+/* Neobrutalism Core Classes */
+.glass-morphism, .glass-brutal, .glass-bento, .neo-card {
+  @apply bg-slate-900 border-3 border-black shadow-brutal rounded-[2rem] transition-all duration-150;
 }
 
-@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-  .glass-morphism {
-    backdrop-filter: blur(6px);
-  }
+.glass-brutal-lg, .neo-card-lg {
+  @apply bg-slate-900 border-4 border-black shadow-brutal-lg rounded-[2.25rem] transition-all duration-150;
+}
+
+.glass-brutal-interactive, .neo-card-interactive {
+  @apply neo-card hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm cursor-pointer;
+}
+
+.btn-brutal-primary, .btn-cyber-primary, .btn-neo-primary, .btn-neo-yellow {
+  @apply bg-[#FFDE00] hover:bg-[#FFE600] text-black font-headline font-black px-6 py-3 rounded-xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-neo-pink {
+  @apply bg-[#FF007A] hover:bg-[#FF2A8D] text-white font-headline font-black px-6 py-3 rounded-xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-neo-lime {
+  @apply bg-[#A3E635] hover:bg-[#B5F244] text-black font-headline font-black px-6 py-3 rounded-xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-neo-cyan {
+  @apply bg-[#00F0FF] hover:bg-[#33F3FF] text-black font-headline font-black px-6 py-3 rounded-xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-brutal-outline, .btn-cyber-outline, .btn-neo-outline {
+  @apply bg-slate-900 hover:bg-slate-800 text-slate-100 font-headline font-black px-6 py-3 rounded-xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.badge-brutal, .badge-neo {
+  @apply inline-flex items-center gap-1.5 px-3.5 py-1 rounded-xl border-2 border-black font-headline font-black text-xs uppercase tracking-wider shadow-brutal-sm;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }

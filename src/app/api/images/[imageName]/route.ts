@@ -65,9 +65,9 @@ function createMissingImageSvg(fileName: string): string {
 
 export async function GET(
   _request: Request,
-  context: { params: { imageName: string } } | { params: Promise<{ imageName: string }> }
+  context: { params: Promise<{ imageName: string }> }
 ) {
-  const params = await Promise.resolve(context.params);
+  const params = await context.params;
   const fileName = sanitizeFileName(params.imageName);
 
   if (!fileName) {

@@ -3,6 +3,10 @@ export interface AboutContent {
   headlineMain: string;
   headlineHighlight: string;
   name: string;
+  roleDescription?: string;
+  location?: string;
+  email?: string;
+  phone?: string;
   bioParagraphs: string[];
   profileImageId: string;
 }
@@ -70,13 +74,16 @@ export interface ResumeItem {
 
 export const fallbackAboutContent: AboutContent = {
   badge: "About Me",
-  headlineMain: "Beyond the",
-  headlineHighlight: "Pixels",
-  name: "Rizky Pratama",
+  headlineMain: "Building Impact",
+  headlineHighlight: "Through Code",
+  name: "Zidan BSA",
+  location: "Makassar, Indonesia",
+  email: "zidanbz03@gmail.com",
+  phone: "+62 822-9025-9322",
   bioParagraphs: [
-    "Hello! I'm Rizky Pratama, a final-year Computer Science student based in Jakarta. I bridge the gap between functional code and visual storytelling.",
-    "My journey started with tweaking CSS on my personal blog and evolved into building scalable web applications. I believe that good design is not just about how it looks, but how it works for the user.",
-    "When I am not coding, you can find me exploring Jakarta's coffee scene, capturing street photography, or contributing to open-source UI libraries.",
+    "I am a Fullstack Developer focused on building scalable and impactful digital products across mobile and web platforms. I specialize in Flutter for mobile development, Next.js for web applications, and Node.js for backend services.",
+    "I have experience developing end-to-end systems, from designing architecture and integrating APIs to delivering user-focused interfaces. I have built several real-world projects, including an edtech platform (MentorMe) and a SaaS solution for UMKM, where I was directly involved in solving practical business problems through technology.",
+    "My approach to development is product-oriented, I do not just write code, but focus on how systems deliver value, perform efficiently, and scale over time.",
   ],
   profileImageId: "profile-photo",
 };

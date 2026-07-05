@@ -56,7 +56,6 @@ export function Navbar() {
     { name: 'Home', href: isHomePage ? '#about' : '/#about', id: 'about', type: 'section' as const },
     { name: 'Work', href: isHomePage ? '#work' : '/#work', id: 'work', type: 'section' as const },
     { name: 'Resume', href: isHomePage ? '#resume' : '/#resume', id: 'resume', type: 'section' as const },
-
   ];
 
   const isLinkActive = (link: (typeof navLinks)[number]): boolean => {
@@ -68,46 +67,58 @@ export function Navbar() {
   };
 
   return (
-    <motion.nav
-      className={`fixed top-0 w-full z-50 px-6 flex justify-between items-center border-b transition-[background-color,box-shadow,backdrop-filter,border-color,padding] duration-300 ${
-        scrolled
-          ? 'bg-background/94 border-black/10 shadow-md shadow-black/10 py-3.5'
-          : 'bg-transparent/0 backdrop-blur-none border-transparent py-6'
-      }`}
-    >
-      <div className="flex items-center gap-2">
-        <motion.div
-          className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center font-bold text-primary-foreground shadow-md shadow-primary/30"
-          whileHover={{ scale: 1.05, rotate: -4 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-        >
-          Z
-        </motion.div>
-        <span className="font-headline font-bold text-xl tracking-tight text-foreground uppercase">Zidan BSA</span>
-      </div>
-      <div className="hidden md:flex gap-8 text-sm font-medium items-center">
-        {navLinks.map((link) => (
-          <Link
-            key={link.id}
-            href={link.href}
-            className={`relative transition-colors duration-300 font-semibold tracking-wide ${
-              isLinkActive(link)
-                ? 'text-foreground'
-                : 'text-muted-foreground hover:text-secondary'
-            }`}
+    <motion.header className="fixed top-5 left-0 right-0 z-50 px-4 md:px-8 max-w-6xl mx-auto pointer-events-none">
+      <nav
+        className={`pointer-events-auto w-full px-5 py-3 rounded-2xl border-3 border-black transition-all duration-200 flex items-center justify-between ${
+          scrolled
+            ? 'bg-slate-900/95 backdrop-blur-md shadow-brutal-lg'
+            : 'bg-slate-900/85 backdrop-blur-md shadow-brutal'
+        }`}
+      >
+        {/* Brand Logo */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <motion.div
+            className="w-9 h-9 bg-[#FFDE00] border-2 border-black rounded-xl flex items-center justify-center font-headline font-black text-black shadow-brutal-sm group-hover:-rotate-6 transition-transform"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {link.name}
-            {isLinkActive(link) && (
-              <motion.span
-                layoutId="nav-pill"
-                className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-secondary"
-                transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-              />
-            )}
-          </Link>
-        ))}
-      </div>
-      <div className="hidden sm:block w-32" /> {/* Spacer for balance */}
-    </motion.nav>
+            Z
+          </motion.div>
+          <span className="font-headline font-black text-lg tracking-tight text-white uppercase">
+            Zidan <span className="text-[#FFDE00]">BSA</span>
+          </span>
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex items-center gap-1 bg-black/60 p-1.5 rounded-xl border-2 border-black">
+            {navLinks.map((link) => {
+              const active = isLinkActive(link);
+              return (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  className={`relative px-4 py-1.5 rounded-lg text-xs font-headline font-black tracking-wider uppercase transition-all duration-150 ${
+                    active
+                      ? 'text-black bg-[#FFDE00] border-2 border-black shadow-brutal-sm scale-[1.02]'
+                      : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Hire Me CTA Button */}
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#FF007A] text-white text-xs font-headline font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal active:translate-x-0.5 active:translate-y-0.5 transition-all"
+          >
+            Contact ✉️
+          </a>
+        </div>
+      </nav>
+    </motion.header>
   );
 }

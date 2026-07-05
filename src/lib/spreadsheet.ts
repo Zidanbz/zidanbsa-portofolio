@@ -181,6 +181,9 @@ function mapAboutContent(records: SpreadsheetRow[]): AboutContent | null {
     headlineMain: getCell(record, "headlineMain", "headline", "headlineTop") || fallbackAboutContent.headlineMain,
     headlineHighlight: getCell(record, "headlineHighlight", "headlineAccent") || fallbackAboutContent.headlineHighlight,
     name: getCell(record, "name", "fullName") || fallbackAboutContent.name,
+    location: getCell(record, "location", "city", "address") || fallbackAboutContent.location,
+    email: getCell(record, "email") || fallbackAboutContent.email,
+    phone: getCell(record, "phone", "whatsapp") || fallbackAboutContent.phone,
     bioParagraphs: bioParagraphs.length > 0 ? bioParagraphs : fallbackAboutContent.bioParagraphs,
     profileImageId:
       getCell(record, "profileImageId", "imageId", "profilePhotoId") || fallbackAboutContent.profileImageId,

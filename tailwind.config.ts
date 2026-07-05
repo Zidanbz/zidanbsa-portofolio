@@ -11,14 +11,23 @@ export default {
   theme: {
     extend: {
         fontFamily: {
-          body: ['Inter', 'sans-serif'],
-          headline: ['Space Grotesk', 'sans-serif'],
-          luckiest: ['"Luckiest Guy"', 'cursive'],
+          body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          headline: ['Outfit', 'sans-serif'],
+          luckiest: ['"Archivo Black"', 'sans-serif'],
           code: ['monospace'],
         },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        neo: {
+          yellow: '#FFDE00',
+          pink: '#FF007A',
+          lime: '#A3E635',
+          cyan: '#00F0FF',
+          purple: '#A855F7',
+          orange: '#FF6B00',
+          black: '#000000',
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -68,10 +77,25 @@ export default {
           ring: 'hsl(var(--sidebar-ring))',
         },
       },
+      borderWidth: {
+        '3': '3px',
+        '4': '4px',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        'brutal-sm': '3px 3px 0px 0px #000000',
+        'brutal': '5px 5px 0px 0px #000000',
+        'brutal-lg': '8px 8px 0px 0px #000000',
+        'brutal-xl': '12px 12px 0px 0px #000000',
+        'brutal-yellow': '5px 5px 0px 0px #FFDE00',
+        'brutal-pink': '5px 5px 0px 0px #FF007A',
+        'brutal-cyan': '5px 5px 0px 0px #00F0FF',
+        'brutal-lime': '5px 5px 0px 0px #A3E635',
+        'brutal-white': '5px 5px 0px 0px #ffffff',
       },
       keyframes: {
         'accordion-down': {
@@ -96,19 +120,23 @@ export default {
         },
         'orb-1': {
           '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(48px, 36px) scale(1.06)' },
+          '50%': { transform: 'translate(48px, 36px) scale(1.08)' },
         },
         'orb-2': {
           '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(-40px, -28px) scale(1.05)' },
+          '50%': { transform: 'translate(-40px, -28px) scale(1.06)' },
         },
         'orb-3': {
           '0%, 100%': { opacity: '0.35' },
-          '50%': { opacity: '0.65' },
+          '50%': { opacity: '0.75' },
         },
         'pulse-soft': {
           '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
           '50%': { opacity: '0.85', transform: 'scale(1.08)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-8px) rotate(1.5deg)' },
         },
       },
       animation: {
@@ -119,6 +147,7 @@ export default {
         'orb-2': 'orb-2 30s ease-in-out infinite',
         'orb-3': 'orb-3 14s ease-in-out infinite',
         'pulse-soft': 'pulse-soft 5s ease-in-out infinite',
+        'float-slow': 'float-slow 6s ease-in-out infinite',
       },
     },
   },
