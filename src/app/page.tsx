@@ -13,6 +13,8 @@ import { PageBackdrop } from '@/components/PageBackdrop';
 import { AnimatedHero } from '@/components/AnimatedHero';
 import { getAchievementData } from '@/lib/spreadsheet';
 import { LiftOnHover, Reveal, StaggerItem } from '@/components/motion/Reveal';
+import { GithubContributions } from '@/components/GithubContributions';
+
 
 const expertiseIconMap: Record<ExpertiseIcon, LucideIcon> = {
   code: Code,
@@ -43,7 +45,7 @@ export default async function Home() {
       </section>
 
       {/* Bento Grid About Section */}
-      <section className="py-16 px-6 max-w-7xl mx-auto border-t-3 border-black">
+      <section className="pt-16 pb-8 px-6 max-w-7xl mx-auto border-t-3 border-black">
         <Reveal className="mb-8">
           <div className="flex items-center gap-3">
             <span className="badge-neo bg-[#FFDE00] text-black shadow-brutal-sm">ABOUT ARCHITECTURE ✨</span>
@@ -215,6 +217,9 @@ export default async function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* GitHub Contributions Section */}
+      <GithubContributions username="Zidanbz" />
 
       {/* Expertise / What I Do */}
       <section className="py-20 px-6 max-w-7xl mx-auto border-t-3 border-black">
