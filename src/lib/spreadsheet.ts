@@ -148,17 +148,8 @@ function parseResumeSide(value: string): ResumeSide {
 }
 
 function parseExpertiseIcon(value: string): ExpertiseIcon {
-  const lowered = value.toLowerCase();
-  if (lowered === "layout" || lowered === "ui" || lowered === "ux") {
-    return "layout";
-  }
-  if (lowered === "cpu" || lowered === "backend" || lowered === "chip") {
-    return "cpu";
-  }
-  if (lowered === "box" || lowered === "cube") {
-    return "box";
-  }
-  return "code";
+  const trimmed = value.trim();
+  return trimmed || "code";
 }
 
 function mapAboutContent(records: SpreadsheetRow[]): AboutContent | null {

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -15,17 +14,8 @@ type RevealProps = {
 
 function useShouldReduceEffects() {
   const reduceMotion = useReducedMotion();
-  const [isCoarseOrMobile, setIsCoarseOrMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(pointer: coarse), (max-width: 900px)");
-    const onChange = () => setIsCoarseOrMobile(mediaQuery.matches);
-    onChange();
-    mediaQuery.addEventListener("change", onChange);
-    return () => mediaQuery.removeEventListener("change", onChange);
-  }, []);
-
-  return reduceMotion || isCoarseOrMobile;
+  // Only respect user's explicit OS reduced-motion preference
+  return Boolean(reduceMotion);
 }
 
 export function Reveal({ children, className, delay = 0, y = 28 }: RevealProps) {
@@ -40,7 +30,7 @@ export function Reveal({ children, className, delay = 0, y = 28 }: RevealProps) 
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-48px 0px -12% 0px" }}
+      viewport={{ once: true, margin: "-40px 0px -10% 0px" }}
       transition={{ duration: 0.55, delay, ease }}
     >
       {children}
@@ -70,10 +60,10 @@ export function StaggerItem({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px 0px -10% 0px" }}
-      transition={{ duration: 0.5, delay: index * stagger, ease }}
+      initial={{ opacity: 0, y: 22, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-30px 0px -8% 0px" }}
+      transition={{ duration: 0.45, delay: index * stagger, ease }}
     >
       {children}
     </motion.div>
@@ -85,7 +75,7 @@ type LiftProps = {
   className?: string;
 };
 
-/** Subtle hover lift — keeps motion comfortable and optional via reduced-motion. */
+/** Dynamic spring lift & subtle tilt on hover */
 export function LiftOnHover({ children, className }: LiftProps) {
   const reduce = useShouldReduceEffects();
 
@@ -96,8 +86,76 @@ export function LiftOnHover({ children, className }: LiftProps) {
   return (
     <motion.div
       className={className}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 420, damping: 28 }}
+      whileHover={{ y: -8, scale: 1.02, rotate: -0.5 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+type FloatAnimationProps = {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+  distance?: number;
+};
+
+/** Continuous bobbing / floating animation for stickers & badges */
+export function FloatAnimation({
+  children,
+  className,
+  duration = 3.5,
+  distance = 8,
+}: FloatAnimationProps) {
+  const reduce = useShouldReduceEffects();
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      animate={{ y: [-distance, distance, -distance] }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+type PopInProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+};
+
+/** Pop in animation with elastic overshoot */
+export function PopIn({ children, className, delay = 0 }: PopInProps) {
+  const reduce = useShouldReduceEffects();
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, scale: 0.6 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        type: "spring",
+        stiffness: 350,
+        damping: 20,
+        delay,
+      }}
     >
       {children}
     </motion.div>

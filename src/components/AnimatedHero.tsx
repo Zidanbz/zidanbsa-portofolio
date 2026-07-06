@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { Box } from "lucide-react";
 import type { AboutContent, StatItem } from "@/lib/portfolio-data";
+import { FloatAnimation } from "@/components/motion/Reveal";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -58,7 +58,9 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
 
       <motion.div variants={item} className="lg:col-span-5 relative order-1 lg:order-2">
         {/* Neobrutalist Offset Background Box (Signature Neobrutal Yellow #FFDE00) */}
-        <div className="absolute -bottom-3 right-2 md:right-6 w-[82%] h-[78%] bg-[#FFDE00] rounded-[2.5rem] border-4 border-black shadow-brutal-lg z-0" />
+        <FloatAnimation duration={4} distance={5}>
+          <div className="absolute -bottom-3 right-2 md:right-6 w-[82%] h-[78%] bg-[#FFDE00] rounded-[2.5rem] border-4 border-black shadow-brutal-lg z-0" />
+        </FloatAnimation>
 
         {/* Profile Image Container */}
         <div className="relative aspect-[4/5] max-w-[360px] mx-auto lg:ml-auto rounded-[2.5rem] overflow-hidden border-4 border-black shadow-brutal-lg bg-slate-900 z-[1] group">
@@ -79,14 +81,18 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
           )}
 
           {/* Floating Sticker Badges */}
-          <div className="absolute top-4 right-4 bg-[#A3E635] text-black border-2 border-black px-3.5 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 animate-float rotate-2 z-[2]">
-            <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
-            <span className="text-[11px] font-headline font-black uppercase tracking-wider">AVAILABLE ⚡</span>
-          </div>
+          <FloatAnimation duration={3.2} distance={6} className="absolute top-4 right-4 z-[2]">
+            <div className="bg-[#A3E635] text-black border-2 border-black px-3.5 py-1.5 rounded-xl shadow-brutal-sm flex items-center gap-2 rotate-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-black animate-ping" />
+              <span className="text-[11px] font-headline font-black uppercase tracking-wider">AVAILABLE ⚡</span>
+            </div>
+          </FloatAnimation>
 
-          <div className="absolute bottom-4 left-4 bg-[#FF007A] text-white px-4 py-1.5 rounded-xl border-2 border-black shadow-brutal-sm -rotate-3 z-[2]">
-            <span className="text-xs font-headline font-black uppercase tracking-wide">ZIDAN BSA 👋</span>
-          </div>
+          <FloatAnimation duration={3.8} distance={7} className="absolute bottom-4 left-4 z-[2]">
+            <div className="bg-[#FF007A] text-white px-4 py-1.5 rounded-xl border-2 border-black shadow-brutal-sm -rotate-3">
+              <span className="text-xs font-headline font-black uppercase tracking-wide">ZIDAN BSA 👋</span>
+            </div>
+          </FloatAnimation>
         </div>
       </motion.div>
     </motion.div>
@@ -141,17 +147,21 @@ function HeroContent({
   motion: boolean;
 }) {
   const statCardClass =
-    "bg-slate-900 p-5 rounded-2xl border-3 border-black shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-brutal-sm transition-all duration-150 group/stat";
+    "bg-slate-900 p-5 rounded-2xl border-3 border-black shadow-brutal transition-all duration-150 group/stat cursor-default";
 
   const headline = (
     <div>
       <div className="flex flex-wrap gap-2.5 mb-5">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FFDE00] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm -rotate-1">
-          💻 FULLSTACK DEVELOPER
-        </span>
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#00F0FF] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm rotate-2">
-          {about.location ? `${about.location.toUpperCase()} 📍` : "MAKASSAR, ID 📍"}
-        </span>
+        <FloatAnimation duration={4} distance={4}>
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#FFDE00] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm -rotate-1">
+            💻 FULLSTACK DEVELOPER
+          </span>
+        </FloatAnimation>
+        <FloatAnimation duration={4.5} distance={5}>
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#00F0FF] text-black font-headline font-black text-xs uppercase border-2 border-black shadow-brutal-sm rotate-2">
+            {about.location ? `${about.location.toUpperCase()} 📍` : "MAKASSAR, ID 📍"}
+          </span>
+        </FloatAnimation>
       </div>
       <h1 className="text-6xl sm:text-7xl md:text-8xl xl:text-9xl font-luckiest font-black mb-6 leading-[0.88] uppercase tracking-[-0.03em] text-white drop-shadow-[5px_5px_0px_#FFDE00]">
         PORTO<br />FOLIO
@@ -171,6 +181,7 @@ function HeroContent({
             className={statCardClass}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6, scale: 1.03 }}
             transition={{ delay: 0.35 + i * 0.06, duration: 0.45, ease }}
           >
             <p className="text-3xl font-headline font-black text-[#FFDE00] mb-0.5 group-hover/stat:text-[#00F0FF] transition-colors">
@@ -201,6 +212,3 @@ function HeroContent({
     </>
   );
 }
-
-
-

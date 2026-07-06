@@ -4,7 +4,24 @@ import { Navbar } from '@/components/Navbar';
 import { ProjectSection } from '@/components/ProjectSection';
 import { ResumeSection } from '@/components/ResumeSection';
 import { ContactSection } from '@/components/ContactSection';
-import { Code, Cpu, Layout, Box, type LucideIcon } from 'lucide-react';
+import {
+  Code,
+  Cpu,
+  Layout,
+  Box,
+  Database,
+  GitBranch,
+  Zap,
+  Users,
+  Lightbulb,
+  Sparkles,
+  Server,
+  Smartphone,
+  Globe,
+  Layers,
+  Terminal,
+  type LucideIcon,
+} from 'lucide-react';
 import { Toaster } from '@/components/ui/toaster';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { getPortfolioData } from '@/lib/spreadsheet';
@@ -15,12 +32,32 @@ import { getAchievementData } from '@/lib/spreadsheet';
 import { LiftOnHover, Reveal, StaggerItem } from '@/components/motion/Reveal';
 import { GithubContributions } from '@/components/GithubContributions';
 
-
-const expertiseIconMap: Record<ExpertiseIcon, LucideIcon> = {
+const expertiseIconMap: Record<string, LucideIcon> = {
   code: Code,
   layout: Layout,
+  ui: Layout,
+  ux: Layout,
   cpu: Cpu,
+  backend: Cpu,
   box: Box,
+  database: Database,
+  db: Database,
+  'git-branch': GitBranch,
+  gitbranch: GitBranch,
+  git_branch: GitBranch,
+  zap: Zap,
+  lightning: Zap,
+  users: Users,
+  team: Users,
+  lightbulb: Lightbulb,
+  idea: Lightbulb,
+  sparkles: Sparkles,
+  server: Server,
+  smartphone: Smartphone,
+  mobile: Smartphone,
+  globe: Globe,
+  layers: Layers,
+  terminal: Terminal,
 };
 
 export default async function Home() {
@@ -40,7 +77,7 @@ export default async function Home() {
       <Navbar />
 
       {/* Hero / About Section */}
-      <section id="about" className="relative min-h-screen flex items-center pt-32 pb-20">
+      <section id="about" className="relative min-h-screen flex items-center pt-32 pb-12">
         <AnimatedHero about={about} stats={stats} profileImg={profileImg} />
       </section>
 
@@ -198,7 +235,7 @@ export default async function Home() {
                 🏆 HONORS & ACHIEVEMENTS
               </h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {achievements.slice(0, 4).map((achievement) => (
+                {achievements.map((achievement) => (
                   <div
                     key={achievement.id}
                     className="p-4 rounded-2xl border-3 border-black bg-slate-950 shadow-brutal-sm hover:-translate-y-0.5 transition-all"
@@ -233,7 +270,9 @@ export default async function Home() {
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tocItems.map((item, index) => {
-            const Icon = expertiseIconMap[item.icon] ?? Code;
+            const iconKey = String(item.icon).toLowerCase().trim();
+            const normalizedKey = iconKey.replace(/[^a-z0-9]/g, '');
+            const Icon = expertiseIconMap[iconKey] ?? expertiseIconMap[normalizedKey] ?? Code;
             const colors = [
               "bg-[#FFDE00] text-black",
               "bg-[#FF007A] text-white",

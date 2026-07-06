@@ -17,7 +17,7 @@ export interface StatItem {
   value: string;
 }
 
-export type ExpertiseIcon = "code" | "layout" | "cpu" | "box";
+export type ExpertiseIcon = string;
 
 export interface ExpertiseItem {
   id: number;
