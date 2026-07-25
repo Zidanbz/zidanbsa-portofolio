@@ -72,9 +72,10 @@ export default async function Home() {
   const tocItems = expertise;
 
   return (
-    <main className="relative bg-background overflow-hidden text-foreground">
+    <main className="relative isolate bg-background overflow-hidden text-foreground">
       <PageBackdrop />
-      <Navbar />
+      <div className="relative z-10">
+        <Navbar />
 
       {/* Hero / About Section */}
       <section id="about" className="relative min-h-screen flex items-center pt-32 pb-12">
@@ -336,7 +337,8 @@ export default async function Home() {
         </footer>
       </Reveal>
 
-      <Toaster />
+        <Toaster />
+      </div>
     </main>
   );
 }

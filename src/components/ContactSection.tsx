@@ -4,8 +4,10 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, Github, Linkedin, Instagram, MessageSquare } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
+import { PortfolioMascot } from '@/components/portfolio/mascot-guide';
 
 export function ContactSection() {
+  const [mascotInteraction, setMascotInteraction] = React.useState(0);
   const mailtoUrl = `mailto:zidanbz03@gmail.com?subject=${encodeURIComponent(
     'Kolaborasi dari Website Portfolio'
   )}&body=${encodeURIComponent(
@@ -43,20 +45,33 @@ export function ContactSection() {
             I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              className="btn-neo-yellow h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
-              onClick={() => window.open(mailtoUrl, '_self')}
-            >
-              Contact Me <Mail className="h-5 w-5 stroke-[2.5]" />
-            </Button>
+          <div className="flex flex-col items-center justify-center gap-5 md:flex-row md:gap-7">
+            <PortfolioMascot
+              section="contact"
+              size={108}
+              mobileSize={72}
+              position="center"
+              alt="Robot mascot encouraging visitors to start a conversation"
+              interactionSignal={mascotInteraction}
+            />
 
-            <Button
-              className="btn-neo-pink h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
-              onClick={() => window.open(whatsappUrl, '_blank')}
-            >
-              Chat on WhatsApp <MessageSquare className="h-5 w-5 stroke-[2.5]" />
-            </Button>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button
+                className="btn-neo-yellow h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
+                onMouseEnter={() => setMascotInteraction((value) => value + 1)}
+                onClick={() => window.open(mailtoUrl, '_self')}
+              >
+                Contact Me <Mail className="h-5 w-5 stroke-[2.5]" />
+              </Button>
+
+              <Button
+                className="btn-neo-pink h-14 px-8 rounded-2xl text-base uppercase border-3 border-black shadow-brutal"
+                onMouseEnter={() => setMascotInteraction((value) => value + 1)}
+                onClick={() => window.open(whatsappUrl, '_blank')}
+              >
+                Chat on WhatsApp <MessageSquare className="h-5 w-5 stroke-[2.5]" />
+              </Button>
+            </div>
           </div>
 
           <div className="relative mt-12 flex justify-center gap-4">

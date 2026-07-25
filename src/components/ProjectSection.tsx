@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ProjectItem } from "@/lib/portfolio-data";
 import { LiftOnHover, Reveal, StaggerItem } from "@/components/motion/Reveal";
+import { PortfolioMascot } from "@/components/portfolio/mascot-guide";
 
 interface ProjectSectionProps {
   projects: ProjectItem[];
@@ -41,7 +42,7 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
 
   return (
     <section id="work" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div className="mb-12 flex flex-col justify-between gap-6 md:mb-4 md:flex-row md:items-end">
         <Reveal>
           <div>
             <span className="badge-neo bg-[#FFDE00] text-black shadow-brutal-sm mb-3">MY PORTFOLIO 🚀</span>
@@ -67,6 +68,19 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
             ))}
           </div>
         </Reveal>
+      </div>
+
+      <div className="relative mb-4 hidden h-28 md:block">
+        <PortfolioMascot
+          section="projects"
+          size={104}
+          position="right"
+          alt="Robot mascot pointing visitors toward the featured projects"
+          speech="Explore some of my featured work."
+          speechPosition="left"
+          decorative={false}
+          className="absolute bottom-0 right-2"
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

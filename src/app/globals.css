@@ -45,7 +45,11 @@
   .animate-orb-2,
   .animate-orb-3,
   .animate-pulse-soft,
-  .animate-gradient-shift {
+  .animate-gradient-shift,
+  .backdrop-floater,
+  .backdrop-particle,
+  .backdrop-orbit,
+  .backdrop-scanline {
     animation: none !important;
   }
 }
@@ -119,4 +123,111 @@
 
 .animate-float {
   animation: float 5s ease-in-out infinite;
+}
+
+.portfolio-mascot {
+  width: var(--mascot-mobile-size);
+  height: calc(var(--mascot-mobile-size) * 1.17);
+}
+
+@media (min-width: 768px) {
+  .portfolio-mascot {
+    width: var(--mascot-size);
+    height: calc(var(--mascot-size) * 1.17);
+  }
+}
+
+/* Lightweight global background assets */
+.backdrop-scanline {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 240, 255, 0.08) 48%,
+    rgba(0, 240, 255, 0.18) 50%,
+    transparent 52%,
+    transparent 100%
+  );
+  background-size: 100% 220px;
+  animation: backdrop-scan 14s linear infinite;
+}
+
+.backdrop-floater {
+  @apply absolute items-center justify-center rounded-lg border-2 border-black font-headline font-black text-black shadow-brutal-sm;
+  left: var(--asset-left);
+  top: var(--asset-top);
+  opacity: 0.2;
+  animation: backdrop-drift var(--asset-duration) ease-in-out var(--asset-delay) infinite alternate;
+}
+
+.backdrop-particle {
+  @apply absolute rounded-full border border-black;
+  left: var(--asset-left);
+  top: var(--asset-top);
+  width: var(--asset-size);
+  height: var(--asset-size);
+  opacity: 0.38;
+  box-shadow: 0 0 12px currentColor;
+  animation: backdrop-particle-drift var(--asset-duration) ease-in-out var(--asset-delay) infinite alternate;
+}
+
+.backdrop-orbit {
+  @apply absolute rounded-full border-2 border-dashed;
+  opacity: 0.45;
+  animation: backdrop-orbit-spin 26s linear infinite;
+}
+
+.backdrop-orbit::before,
+.backdrop-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  background: #00f0ff;
+  border: 2px solid #000;
+}
+
+.backdrop-orbit::before {
+  top: 12%;
+  left: 12%;
+  width: 14px;
+  height: 14px;
+}
+
+.backdrop-orbit::after {
+  right: 7%;
+  bottom: 24%;
+  width: 9px;
+  height: 9px;
+  background: #ffde00;
+}
+
+@keyframes backdrop-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(var(--asset-drift-x), var(--asset-drift-y), 0) rotate(var(--asset-rotation));
+  }
+}
+
+@keyframes backdrop-particle-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.75);
+    opacity: 0.18;
+  }
+  to {
+    transform: translate3d(var(--asset-drift-x), var(--asset-drift-y), 0) scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+@keyframes backdrop-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes backdrop-scan {
+  to {
+    background-position-y: 220px;
+  }
 }

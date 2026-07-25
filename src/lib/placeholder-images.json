@@ -73,6 +73,30 @@
       "objectPosition": "center"
     },
     {
+      "id": "project10",
+      "description": "SIDIDI maternal health and nutrition mobile application screens",
+      "imageUrl": "project10.png",
+      "imageHint": "maternal health mobile app",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project11",
+      "description": "ERBIS road and bridge monitoring mobile application screens",
+      "imageUrl": "project11.png",
+      "imageHint": "road monitoring mobile app",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
+      "id": "project12",
+      "description": "ATAP digital ordering and payment mobile application screens",
+      "imageUrl": "project12.png",
+      "imageHint": "restaurant ordering mobile app",
+      "objectFit": "contain",
+      "objectPosition": "center"
+    },
+    {
       "id": "profile-photo",
       "description": "Professional profile photo of Rizky Pratama",
       "imageUrl": "profile-photo.png",

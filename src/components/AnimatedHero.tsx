@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import type { AboutContent, StatItem } from "@/lib/portfolio-data";
 import { FloatAnimation } from "@/components/motion/Reveal";
+import { PortfolioMascot } from "@/components/portfolio/mascot-guide";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -94,6 +95,15 @@ export function AnimatedHero({ about, stats, profileImg }: AnimatedHeroProps) {
             </div>
           </FloatAnimation>
         </div>
+
+        <PortfolioMascot
+          section="hero"
+          size={120}
+          mobileSize={72}
+          position="left"
+          alt="Friendly robot mascot welcoming visitors to Zidan's portfolio"
+          className="absolute bottom-24 left-2 z-[3] sm:bottom-3 sm:left-[calc(50%-190px)] lg:-bottom-5 lg:-left-7"
+        />
       </motion.div>
     </motion.div>
   );
@@ -132,6 +142,14 @@ function HeroLayout({
             <span className="text-[11px] font-headline font-black uppercase tracking-wider">AVAILABLE ⚡</span>
           </div>
         </div>
+        <PortfolioMascot
+          section="hero"
+          size={120}
+          mobileSize={72}
+          position="left"
+          alt="Friendly robot mascot welcoming visitors to Zidan's portfolio"
+          className="absolute bottom-24 left-2 z-[3] sm:bottom-3 sm:left-[calc(50%-190px)] lg:-bottom-5 lg:-left-7"
+        />
       </div>
     </div>
   );

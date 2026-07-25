@@ -128,6 +128,17 @@ function parseList(value: string): string[] {
     .filter((item) => item.length > 0);
 }
 
+function parseResumeHighlights(value: string): string[] {
+  if (!value.trim()) {
+    return [];
+  }
+
+  return value
+    .split(/\s*(?:\||;|\r?\n|•)\s*/)
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
+}
+
 function parseResumeAccent(value: string): ResumeAccent {
   return value.toLowerCase() === "secondary" ? "secondary" : "primary";
 }
@@ -289,7 +300,7 @@ function mapResumeItems(records: SpreadsheetRow[]): ResumeItem[] {
         title: getCell(record, "title"),
         organization: getCell(record, "organization", "company", "institution"),
         description: getCell(record, "description", "summary") || undefined,
-        highlights: parseList(getCell(record, "highlights", "bullets", "points")),
+        highlights: parseResumeHighlights(getCell(record, "highlights", "bullets", "points")),
         chips: parseList(getCell(record, "chips", "badges", "tags")),
         accent: parseResumeAccent(getCell(record, "accent")),
         icon: parseResumeIcon(getCell(record, "icon")),
